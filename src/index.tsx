@@ -1,4 +1,4 @@
-import { Jarvis } from "./jarvisLib/jarvisLib";
+import { Jarvis } from "./lib/jarvisLib";
 
 const el = <h1 title="foo">hello world!</h1>;
 const container: HTMLElement | null = document.querySelector('#root');
@@ -19,4 +19,3 @@ function App() {
 }
 
 Jarvis.render(<App />, container);
-
