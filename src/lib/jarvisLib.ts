@@ -123,7 +123,7 @@ function createElement(
  * @param element The Jarvis element to render.
  * @param container The DOM node to render the element into.
  */
-function render(element: JarvisElement, container: HTMLElement | null): void {
+function render(element: JarvisElement, container: HTMLElement | Element | null): void {
   wipRoot = {
     dom: container,
     props: { children: [element] },
