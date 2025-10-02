@@ -1,3 +1,5 @@
+// TypeScript doesn’t know about asset modules → It complains when you import an asset
+
 declare module "*.png" {
   const value: string;
   export default value;

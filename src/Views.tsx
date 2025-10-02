@@ -4,6 +4,15 @@ import Logo from './assets/ping_pong_logo.png'
 import Banner from './assets/landing_page_banner.png'
 
 // Pages
+export function Views( Data: any ): Element | null {
+	const viewsMap: ViewMap = {
+		'/': LandingPage,
+	};
+	const { path, setPath } = Data;
+
+	return viewsMap[path]?.(setPath);
+}
+
 function LandingPage( setPath: Function ): Element {
 	return (
 		<div>
@@ -17,13 +26,4 @@ function LandingPage( setPath: Function ): Element {
 			<button>Sign In</button>
 		</div>
 	)
-}
-
-export function Views( Data: any ): Element | null {
-	const viewsMap: ViewMap = {
-		'/': LandingPage,
-	};
-	const { path, setPath } = Data;
-
-	return viewsMap[path]?.(setPath);
 }
