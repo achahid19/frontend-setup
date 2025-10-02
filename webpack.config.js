@@ -25,6 +25,15 @@ module.exports = {
 				],
 				include: [path.resolve(__dirname, 'src')] // where the files should be
 			},
+			{
+				test: /\.(png|jpe?g|gif)$/i,
+				use: [
+					{
+						loader: 'file-loader',
+					},
+				],
+				include: [path.resolve(__dirname, 'src/assets')]
+			}
 		]
 	},
 	// this would resolve the imports in our entry file.

@@ -1,21 +1,24 @@
 import { Jarvis } from "./lib/jarvisLib";
+import { Views } from "./Views";
+import { Utils } from './Utils';
 
-//const el = <h1 title="foo">hello world!</h1>;
-const container: HTMLElement | null = document.querySelector('#root');
+// container where to render the App
+const container = document.getElementById('root');
 
-const increase_count = (count: any, setCounter: any) => {
-	setCounter(count + 1);
-}
-
-function App() {
-	const  [count, setCounter] = Jarvis.useState(0);
+// App
+function App(): Element {
+	const [path, setPath] = Jarvis.useState(Utils.getCurrentPath());
+	const dataObj: Object = {
+		path,
+		setPath,
+	}
 
 	return (
 		<div>
-			<p title="increase">{count}</p>
-			<button onClick= {() => {increase_count(count, setCounter)}}>increase me</button>
+			{ Views(dataObj) }
 		</div>
 	)
 }
 
+// Rendering
 Jarvis.render(<App />, container);
