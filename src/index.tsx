@@ -1,6 +1,6 @@
 import { Jarvis } from "./lib/jarvisLib";
 
-const el = <h1 title="foo">hello world!</h1>;
+//const el = <h1 title="foo">hello world!</h1>;
 const container: HTMLElement | null = document.querySelector('#root');
 
 const increase_count = (count: any, setCounter: any) => {

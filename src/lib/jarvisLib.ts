@@ -446,7 +446,7 @@ function updateDom(
   const isEvent = (key: string) => key.startsWith("on");
   const isProperty = (key: string) => key !== "children" && !isEvent(key);
   const isNew = (prev: any, next: any) => (key: string) => prev[key] !== next[key];
-  const isGone = (prev: any, next: any) => (key: string) => !(key in next);
+  const isGone = (next: any) => (key: string) => !(key in next);
 
   // Remove old or changed event listeners
   Object.keys(prevProps)
@@ -460,7 +460,7 @@ function updateDom(
   // Remove old properties
   Object.keys(prevProps)
     .filter(isProperty)
-    .filter(isGone(prevProps, nextProps))
+    .filter(isGone(nextProps))
     .forEach(name => {
       (dom as any)[name] = "";
     });
