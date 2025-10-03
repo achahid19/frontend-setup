@@ -7,6 +7,7 @@ import Banner from './assets/landing_page_banner.png'
 export function Views( Data: any ): Element | null {
 	const viewsMap: ViewMap = {
 		'/': LandingPage,
+		'/public/': LandingPage,
 	};
 	const { path, setPath } = Data;
 

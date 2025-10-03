@@ -1,3 +1,4 @@
+import './index.css';
 import { Jarvis } from "./lib/jarvisLib";
 import { Views } from "./Views";
 import { Utils } from './Utils';
@@ -14,7 +15,7 @@ function App(): Element {
 	}
 
 	return (
-		<div>
+		<div className="bg-primary-bg min-h-screen flex flex-col items-center justify-center font-primary">
 			{ Views(dataObj) }
 		</div>
 	)

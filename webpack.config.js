@@ -1,5 +1,10 @@
 const path = require('path');
 
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
+// This variable will be true for production builds
+const isProduction = process.env.NODE_ENV === 'production';
+
 module.exports = {
 	/**
 	 * inside this object we can configure how webpack
@@ -33,9 +38,31 @@ module.exports = {
 					},
 				],
 				include: [path.resolve(__dirname, 'src/assets')]
-			}
+			},
+			{
+        		test: /\.css$/i,
+        		use: [
+          		// Loaders are applied in reverse order (from bottom to top)
+          
+          		// 3. In production, this extracts CSS to a file. In development, it injects styles into the DOM.
+          		isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
+          
+          		// 2. This loader resolves CSS imports and url() paths.
+          		'css-loader',
+          
+          		// 1. This loader processes CSS with PostCSS (and Tailwind). THIS RUNS FIRST.
+          		'postcss-loader',
+        		],
+      		},
 		]
 	},
+	plugins: [
+    	// This plugin is only added for production builds
+    	isProduction && new MiniCssExtractPlugin({
+      		filename: '[name].css',
+    	}),
+  	].filter(Boolean), // This trick removes any 'false' items from the array
+
 	// this would resolve the imports in our entry file.
 	resolve: {
 		extensions: ['.tsx', '.ts', '.js', '.png'] // Allow imports without file extensions
